@@ -8,9 +8,10 @@
  */
 
 graphql`
-  query AppQuery {
+  query AppQuery($includeUserBody: Boolean!) {
     node(id: "test") {
       ...Component_node
+      ...User_dataFragment @include(if: $includeUserBody)
     }
   }
 `;
